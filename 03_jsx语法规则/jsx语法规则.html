@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .title{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type = "text/babel"> 
+        const myID = "HellO"
+        const myData = "Hello,REact!"
+        const VDOM= (
+            <h2 className="title" id={myID.toLowerCase()}>
+                <span style = {{
+                    color: 'white',
+                    fontSize: '30px'
+                }}>
+                    {myData.toLowerCase()}
+                </span>
+            </h2>
+        )
+        ReactDOM.render(VDOM,document.getElementById('test'))
+        /**
+         * 定义虚拟DOM时，不用引号
+         * 标签中混入js表达式时，使用大括号
+         * class => className
+         * */
+    </script>
+</body>
+</html>
