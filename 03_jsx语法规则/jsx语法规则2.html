@@ -16,29 +16,30 @@
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.min.js"></script>
     <script type = "text/babel"> 
-        const myID = "HellO"
-        const myData = "Hello,REact!"
+        const data = [
+        {name:'Angular'},
+        {name:'React'},
+        {name:'Vue'},
+        ]
+        const list = ['Angular','React','Vue']
+    
         const VDOM= (
-            <h2 className="title" id={myID.toLowerCase()}>
-                <span style = {{
-                    color: 'white',
-                    fontSize: '30px'
-                }}>
-                    {myData.toLowerCase()}
-                </span>
-            </h2>
+            <div>
+                <h1>前端js框架列表</h1>
+                <ul>
+                    // 不能遍历object
+                    // 大括号里面只能放表达式
+                    // for循环是js语句，不可以当成表达式放在大括号里面
+                    // 而map会返回list，所以可以放在里面  reduce?
+                    {list}
+                </ul>
+            </div>
         )
         ReactDOM.render(VDOM,document.getElementById('test'))
         /**
          * 定义虚拟DOM时，不用引号
          * 标签中混入js表达式时，使用大括号
          * class => className
-         * 内联样式 要用style = {{key:value}}
-         * 只有一个根标签
-         * 标签必须闭合
-         * 标签首字母
-         *  小写：将标签转为html同名标签
-         *  大写：react渲染对应组件 若没有定义则报错
          * */
     </script>
 </body>
