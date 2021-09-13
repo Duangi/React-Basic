@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <div id="test">
+
+    </div>
+</head>
+<body>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        class Weather extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {isHot:false}
+                this.changeWeather = this.changeWeather.bind(this)
+            }
+            // 调用1+n次
+            render() {
+                // console.log('render',this);
+                const {isHot} = this.state
+                return (
+                    
+                    <h1 onClick={this.changeWeather}>
+                        今天天气很{isHot? '炎热':'凉爽'}
+                    </h1>
+                )
+            }
+            changeWeather(){
+                // ChangeWeather放在哪里？  Weather原型对象上，供实例使用
+                // 通过Weather实例调用changeWeather时，changeWeather中的this就是Weather实例
+                // alert('标题被点击了');
+
+                // 注意：状态（state）不能像下面这行 直接更改
+                // this.state.isHot = !this.state.isHot 
+                
+                // 使用setState,且更新是合并操作，原来同名的state会保留
+                const isHot = this.state.isHot
+                this.setState({isHot:!isHot})
+                // isHot = !isHot
+            }
+        }
+        ReactDOM.render(<Weather/>,document.getElementById('test'))
+        // 第一种 绑定点击事件方法
+        // const title = document.getElementById('test');
+        // title.addEventListener('click',()=>{
+        //     alert('标题被点击了');
+        // })
+         
+        // 第二种
+        // const title = document.getElementById('test');
+        // test.onclick = ()=>{
+        //     alert('标题被点击了');
+        // }
+
+        // 前两种React不推荐
+        // 第三种
+        // function changeWeather(){
+        //     alert('标题被点击了');
+        // }
+    </script>
+</body>
+</html>
